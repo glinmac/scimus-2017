@@ -20,5 +20,5 @@ Labs Setup
   1. For each lab:
       1. Open the notebook in Jupyter
       1. Make a copy of the notebook (*File>Make a copy...*)
-      1. Rename it to *Lab 1 - Student Name 1 - Student Name 2*        
-          
+      1. Rename it to *Lab 1 - Student Name 1 - Student Name 2*
+      1. Start working on this new copy          
