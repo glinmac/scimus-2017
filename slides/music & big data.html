@@ -1,0 +1,592 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>SciMus - Music & Big Data</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section data-markdown>
+            # Music
+            &
+            # Big Data
+
+            -
+
+            October 2017 - Ecole Centrale de Nantes
+
+            *Guillaume Gardey*
+        </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Planning
+
+                * Session 1
+                  * Talk & QA: *Music & Web - Architecture & Technology Overview*
+                  * Lab 1: Working with APIs
+
+                * Session 2
+                  * Talk & QA: *Music & Big Data - Overview of challenges & technologies*
+                  * Lab 2: Introduction to Data Processing - Python/Pandas
+
+                Note:
+                * General description and organization of the 3 sessions
+            </section>
+
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data
+
+                  > describes *large* amount of data (structured or unstructured) that
+                    are difficult to process using traditional database and software
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data
+
+                > Big data usually includes data sets with sizes beyond the ability of commonly used
+                  software tools to capture, curate, manage, and process data within a tolerable elapsed time.
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data
+
+                ![big-data](images/slides/bigdata.png)
+
+                Note:
+                * 1 TB: ~2000h CD quality / 17,000 hours at 128kbs
+                * Library of congress ~10TB of printed data (26 millions books)
+                * 1 PB: 1PB of audio (mp3) would take 2000 years to play
+                * 1 EB: 1 gram of DNA can theoretically hold 455 exabytes
+                * 1 ZB: is equivalent to 152 million years of high-definition video
+            </section>
+        </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data - The 3 Vs... (and more)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Volume
+
+                * large data sets
+                * information is not sampled
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Velocity
+
+                * rapidly changing
+                * available in real-time
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Variety
+
+                * different type: text, images, audio, video, ...
+                * structured: JSON, XML, ...
+                * (un|semi) structured: email, images, audio, music, text
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### ... and more Vs
+
+
+                * **Veracity**
+                 * how much trust can be put in the data
+
+                * **Value**
+                 * eventually drives revenues or new features for companies
+
+                * **Variability**
+                 * no fixed data or schema
+                 * evolution in time
+
+            </section>
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data in Music
+
+                -
+
+                ## Where ?
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Content
+
+                 * Audio
+                 * Metadata
+                 * Lyrics
+
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Events
+
+                * Listening patterns
+                * Application events
+                * User activity
+                * Social media data
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Derived data
+
+                * Crowd sourced data
+
+                * Recommendations
+
+                * Playlists
+
+                * User content
+
+            </section>
+
+        </section>
+
+        <section data-markdown data-separator-notes="^Note:">
+            ## Example: Big Data @ Spotify
+
+            ![spotify-data](images/spotify-data.png)
+
+            * 42PB Storage
+            * 200TB data generated / day
+            * 1300 Servers
+
+            Note:
+             * Figures in 2015, probably around 1600 servers now depending on literature
+        </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## How to scale?
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Algorithms & Data Structures
+
+                * Algorithmic & Complexity
+                * Data Structures
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Complexity
+
+                ![complexity-overview](images/complexity-overview.png)
+
+                Note:
+                * 1 billion elements 10^9 / 1GHz 10^9
+                  * O(n) linear: 1 billion operations / 1s
+                  * O(n2) quadratic: 10^18 operations / 10^19 s = ~32 years
+                  * O(log(n)) logarithmic: 20 operations / 0.01 microseconds
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Data structures
+                ![complexity-ds](images/complexity-data-structures.png)
+            </section>
+
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Program optimization
+
+                * CPU
+                * Memory
+                * IO
+                * Network
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Parallelism
+
+                * Multi**threading**
+                * Multi**processing**
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Vertical Scaling
+
+                Same server
+
+
+                **but**
+
+
+                * **More**
+                  * CPU
+                  * Memory
+                  * Storage
+
+                Note:
+                * AWS: x1.32xlarge: 128cpu/1952GB RAM/2x1920GBSSD
+                * Dell: 96cpu/6TB RAM/24 disks (x8TB = 192TB)/
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### New paradigms
+
+                * Dedicated hardware
+                    * GPU (Graphical Process Unit)
+                    * FPGA (Field Programmable Gate Array)
+
+                * New paradigm
+                  * DNA Computing
+                  * Quantum Computing
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Horizontal scaling
+
+                  * Clusters
+                  * Sharding
+                  * Share Nothing
+                  * Distributed Systems
+                  * Cloud
+
+            </section>
+
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data & Hadoop
+
+                * Fundations
+                  * Google File System (2003)
+                  * Google MapReduce (2004)
+                  * Google BigTable (2005/2006)
+
+                * Open Source implementation
+                  * *Apache Nutch* (web crawler)
+                  * Development moved to the *Hadoop* project in 2006
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce
+
+                > A programming model for processing and generating large data sets with a parallel,
+                distributed algorithm on a cluster
+
+                > Takes advantage of the locality of data, processing it near the place it is
+                stored in order to reduce the distance over which it must be transmitted.
+
+                Note:
+                * Distribution of work
+                * Data locality and compute
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce
+
+                Parallel computations on a cluster
+
+                ![cluster](images/slides/cluster.png)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce
+
+                Data locality
+
+                ![cluster](images/slides/data locality.png)
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce
+
+                ![mapreduce](images/slides/MapReduce.png)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce - Word Count
+
+                    def map(document):
+                        for word in document:
+                            emit(word, 1)
+
+                    def reduce(word, values):
+                        count = 0
+                        for value in values:
+                             count += value
+                        emit(word, count)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce - Word Count
+
+                ![wordcount](images/slides/WordCount.png)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Map-Reduce - What Now?
+
+                Relatively simple computational model
+
+                *but*
+
+                Many problems can be translated/solved!
+
+                * SQL
+                * ETL (Extract / Transform / Load)
+                * Machine Learning
+                * Bespoke analysis
+                * ...
+
+             </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Map-Reduce - Limitations
+
+                * MapReduce jobs independent from each others
+                * Network & Disk IO intensive in some cases (shuffle)
+                * Lack of iterative/in-memory computation
+            </section>
+
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Big Data - Beyond Map Reduce
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## New frameworks - DAG
+
+                > Direct Acyclic Graph
+
+                ![dag](images/dag.png)
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## New frameworks - DAG
+
+                * Generalization of Map-Reduce concept
+                * Jobs are aware of all the tasks involved
+                * Allows global optimization
+                * Better use of resources
+
+
+                > Spark, Tez, Drill, Dremel, Spanner, ...
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Spark
+
+                * Fundations
+                  * Berkeley's AMPLab from 2009
+                  * Open sourced and moved as an Apache project in 2013
+
+                * Improvements on the Map-Reduce paradigm
+                  * In memory cluster computing
+                  * Iterative algorithms
+                  * Interactive & Exploratory analysis
+                  * Batch & Streaming
+
+                Note:
+                * DAG system
+                * Java, Python, Scala,
+                * Popular for data science and analysis
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+               ## Spark - RDD (Resilient Distributed Datasets)
+
+                > a fault-tolerant collection of elements that can be operated on in parallel
+
+                ![rdd](images/slides/RDD Overview.png)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+               ## Spark - Driver & Workers
+
+                ![rdd](images/slides/driver & workers.png)
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Spark - High Level Libraries
+
+                * SQL
+                * Streaming
+                * **Machine Learning**
+                * Graph
+            </section>
+
+         </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Machine & Deep Learning
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Machine Learning
+
+                > Machine learning is a field of computer science that gives computers
+                the ability to learn without being explicitly programmed.
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Machine Learning
+
+                * Clustering / Classification
+                * Anomaly Detection
+                * Supervised / Unsupervised Learning
+                * Reinforcement Learning
+                * Neural Nets
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Machine Learning & Big Data
+
+                * Vast quantities of Data
+                * Large data sets for training
+                * Improvement in software/hardware
+                  * GPU
+                  * High Level libraries
+                * Broadly accessible
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Deep Learning
+
+                * Originated in the end of 50'
+                  * Perceptron
+                  * Frank Rosenblatt
+                  * Neurobiology
+                * Neural Networks
+
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Perceptron
+
+                ![perceptron](images/slides/Perceptron.png)
+
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Deep Neural Network
+
+                ![deepnn](images/slides/Deep Neural Network.png)
+
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Deep Learning
+
+                * Image classification
+                * Text Translation
+                * Speech Recognition
+                * Speech Synthesis
+                * Game
+                * ...
+
+            </section>
+
+
+        </section>
+
+
+        <section data-markdown>
+           # Questions?
+
+        </section>
+
+        <section data-markdown>
+            # Lab !
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+        center: true,
+        showNotes: false,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/math/math.js', async: true},
+            {
+                src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
