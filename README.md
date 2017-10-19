@@ -3,6 +3,14 @@ SCIMUS 2017
 
 Lectures/Workshops Ecole Centrale de Nantes October 2017.
 
+Content
+-------
+
+ * Lab 1: *Data collection - Working with Web APIs*
+ * Lab 2: *Introduction to Data Processing - Python - Pandas*
+ * Lab 3: *Data processing at scale - Introduction to Spark & Collaborative Filtering*
+ * Slides: See `slides` branch
+
 Labs Setup
 ----------
 
@@ -23,3 +31,4 @@ Labs Setup
       1. Rename it to *Lab 1 - Student Name 1 - Student Name 2*
       1. Start working on this new copy          
       1. Email report at the end of the session
+
