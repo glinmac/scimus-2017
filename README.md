@@ -7,7 +7,7 @@ Content
 -------
 
  * Lab 1: [*Data collection - Working with Web APIs*](labs/lab1/Lab%201%20-%20Data%20collection%20-%20Working%20with%20Web%20APIs.ipynb)
- * Lab 2: [*Introduction to Data Processing - Python - Pandas*](labs/lab2/Lab%202%20-%20Introduction%20to%20Data%20Processing%20-%20Python%20-%20Pandas.ipynb)
+ * Lab 2: [*Introduction to Data Processing - Python - Pandas*](labs/lab2)
  * Lab 3: *Data processing at scale - Introduction to Spark & Collaborative Filtering*
  * Slides: See `slides` branch
 
