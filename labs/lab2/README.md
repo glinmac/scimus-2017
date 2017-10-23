@@ -9,11 +9,10 @@ Lab instructions
 
             git clone https://github.com/glinmac/scimus-2017
             
-     1. If you have already cloned the repository:
+     1. If you have already cloned the repository:    
      
-     
-           cd scimus-2017
-           git pull
+            cd scimus-2017
+            git pull
          
   1. Install required Python dependencies:
   
