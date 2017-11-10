@@ -1,0 +1,670 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>SciMus - Music & Web</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/solarized.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+
+    <div class="slides">
+
+        <section data-markdown data-separator-notes="^Note:">
+            # Science
+            &
+            # Music
+
+            -
+
+            October 2017 - Ecole Centrale de Nantes
+
+            *Guillaume Gardey*
+        </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Planning
+
+                * Session 1
+                  * Talk & QA: *Music & Web - Architecture & Technology Overview*
+                  * Lab 1: Working with APIs
+
+                * Session 2
+                  * Talk & QA: *Music & Big Data - Overview of challenges & technologies*
+                  * Lab 2: Introduction to Data Processing - Python/Pandas
+
+                Note:
+                * General description and organization of the 3 sessions
+            </section>
+
+        </section>
+
+        <section data-markdown data-separator-notes="^Note:">
+            ## Music & Web
+            &mdash;
+            ## Architecture & Technology Overview
+
+            Note:
+            * Objectives is to give an overview of elements related to the distribution
+            of digital music and the new area of IT, Research & Science used in the
+            context of music.
+        </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Music transformation
+
+                Note:
+                marque par de nombreux changement et innovations
+                innovations technologiques
+                different modes de consomation
+                nouveaux types de musiques et d'instruments
+                musique numeriques
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Technical & Digital transformation
+
+                &#8291;
+
+                Vinyl > Cassette > CDs > MP3 > Streaming
+
+                Note:
+                * Phonographe / Vinyl ~1877 / Edisson
+                * Cassette ~ 1960
+                * Compact disc ~ 1980
+                * MP3 ~ 1990
+                * Active area of innovation & technology
+                * Recording and distribution of music
+                * Music support & services
+                * innovations technologiques qui vont permettre de distribuer et d'ameliorer la qualite des
+                enregistrements
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Consumption models
+
+                * Access
+                  * Concert / Public Events
+                  * Record Shop
+                  * Subscription
+                  * Pay As You Go
+
+                * Ownership
+                  * Physical libraries
+                  * Digital libraries (local/remote)
+
+
+                Note:
+                * Evolution o the consumption models
+                * Access has evolved and shape new ways of consuming
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Notes:">
+                ### Internet
+
+                * Online stores
+
+                * Cloud libraries
+
+                * New services
+                  * Recommendation
+                  * Discovery
+
+                * Music is social
+
+            </section>
+        </section>
+
+        <section data-markdown data-separator-notes="^Note:">
+            ## Components of a Music service
+
+            &#8291;
+
+            > Thinking of building a Music service?
+
+            Note:
+            * Put in place the story to present different concepts
+            * Deep dive into architecture of a generic music service/system
+        </section>
+
+        <section data-markdown data-separator-notes="^Note:">
+            ## 10,000 feet view
+
+            ![naive-view](images/slides/Architecture%20-%2010k%20view.png)
+
+            Note:
+            * Very simplistic approach
+            * "consumer" view
+            * Web service
+            * Different types of clients (phones, laptop, tablet, ...)
+        </section>
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Dive 1 - Generic architecture
+
+                ![naive-view](images/slides/Architecture - Dive 1.png)
+
+                Note:
+                * Interactions are performed through APIs
+                * Frontends and applications communicates to APIs, that talk to private backends/api
+                * Some storage in place to store information
+                * Next is to get more into the details of API and services
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## API
+
+                **Application Programming Interface**
+
+                >  A set of subroutine definitions, protocols, and tools for building software and applications
+
+           </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## API
+
+
+                They are *everywhere*!
+
+                &#8291;
+
+                * OS (POSIX, Windows API, iOS, Android, ...)
+                * Software libraries (C++, Scala, Java, Python, Javascript, ...)
+                * Protocols, Remote APIs (HTTP, JDBC, ...)
+                * Web API (SOAP, REST, ...)
+
+                Note:
+                * Building blocks of any software
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## API
+
+                 API is not an implementation, only defines the *interface*
+
+                    // Compare strings - C
+                    int strcmp(const char *s1, const char *s2);
+
+                    // The strcmp() and strncmp() functions return an integer greater than, equal to,
+                    // or less than 0, according as the string s1 is greater than, equal to, or less
+                    // than the string s2.
+
+                 * Functions, Methods, Input/Output parameters, Return types
+                 * Protocols
+                 * Data models of Input/Output objects
+
+                Note:
+                * General principles behind an API
+                * Extend to different domain
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## API & Web
+
+                * Web Services
+                * REST
+
+                Note:
+                * 2 main trends
+                * different type of APIs/ approaches
+                * common pattern nowadays
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Web Service
+
+                  * SOAP (Simple Object Access Protocol)
+                  * XML (eXtended Markup Language)
+
+
+                    POST /InStock HTTP/1.1
+                    Host: www.example.org
+                    Content-Type: application/soap+xml; charset=utf-8
+                    Content-Length: 299
+                    SOAPAction: "http://www.w3.org/2003/05/soap-envelope"
+
+                    &lt;soap:Envelope
+                        xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+                        xmlns:m="http://www.example.org/stock/Manikandan"&gt;
+                        &lt;soap:Header&gt;
+                        &lt;/soap:Header&gt;
+                        &lt;soap:Body&gt;
+                            &lt;m:GetStockPrice&gt;
+                               &lt;m:StockName&gt;GOOGLE&lt;/m:StockName&gt;
+                            &lt;/m:GetStockPrice&gt;
+                        &lt;/soap:Body&gt;
+                    &lt;/soap:Envelope&gt;
+
+                Note:
+                * "oldest" abstraction
+                * Gain success with Java
+                * Structured and well identify way to build API and distributed services
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Web APIs
+
+                * REST/RESTful (Representational State Transfer)
+                * JSON (JavaScript Object Notation)
+                      GET /products/1
+                      Host: https://api.example.com
+                      Accept: application/json
+
+                      {
+                        "id": 1,
+                        "name": "Foo",
+                        "price": 123,
+                        "stock": {
+                          "warehouse": 300,
+                          "retail": 20
+                        }
+                      }
+
+
+                Note:
+                * More recent abstraction
+                * HTTP & JSON
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Why Web Services/API?
+
+
+                * Composition
+                * Re-usability
+                * Testing
+                * Prototyping
+
+                > Sofware Development!
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ##  Architecture Overview
+
+                ![apis](images/slides/APIs.png)
+
+                Note:
+                * client/server, n-tier architecture, monolithic
+                * microservices, small services, one or a very low number of function
+                  * increase scalability
+                  * increased testing/deployment/replacement
+            </section>
+
+            <section data-markdown>
+                ## Frontend / Backend
+
+                Note:
+                * Common terminology
+            </section>
+
+            <section data-markdown>
+                ## Frontend
+
+                > Presentation layer, software closest to the end users
+
+                  * Visualization
+                  * Client application
+                  * User interface and interaction (UI/UX)
+                  * Lightweight
+
+            </section>
+
+
+            <section data-markdown>
+                ## Backend
+
+                > Business, Data access & Data storage layer
+
+                > Not accessed directly by end users
+
+                  * Business logic
+                  * Data access
+                  * API
+
+            </section>
+
+            <section data-markdown>
+                ## Design Principles
+
+                * **Monolithic Applications**
+                  * Self-contained
+                  * Independence
+
+                * **Modular Applications**
+                  * client/server, n-tiered, microservices
+                  * loose coupling
+                  * modularity
+                  * reuse
+
+                Note:
+                 * Different approaches to build software
+                 * Monolithic, historical, comes from the mainframes
+                 * Used to decouple elements in applications
+                 * improve development and iterations
+            </section>
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Dive 2 - Content Delivery
+
+                ![naive-view](images/slides/Architecture - Dive 2.png)
+
+                Note:
+                * Infrastructure required for pushing/publishing content to consumers
+                * Download / buy music
+                * Stream music
+                * Access website with rich content / audio / video
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### CDN
+
+                > Content Distribution Network
+
+                ![cdn](images/slides/CDN.png)
+
+                Note:
+                * Deliver content near to the location of the users
+                * Smaller latency, lower cost
+                * Improved user experience
+                * CDN distribution & synchronization
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Peer 2 Peer
+
+                > Decentralized network
+
+                ![naive-view](images/slides/P2P.png)
+
+                Note:
+                * Relies on user exchanging data peer 2 peer
+                * Seeds from a smaller number of main servers
+                * Lower load and network activity on company's infrastructure
+                * Resilience
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Streaming
+
+                ![naive-view](images/slides/streaming.png)
+
+                Note:
+                * DRM digital right management
+                * Adaptive quality / streaming
+                * Encoding / decoding
+            </section>
+        </section>
+
+
+        <section>
+            <section data-markdown data-separator-notes="^Note:">
+                ## Dive 3 - Data & Events Collection
+
+                ![naive-view](images/slides/Architecture - Dive 3.png)
+
+                Note:
+                * Data collection from users
+                * Personalized services:
+                  * recommendation
+                  * social features, sharing
+                  * mailing campaign & marketing
+                * A/B testing, product development
+                * the data part, using data from users to personalize services
+                * buid and validate new products
+            </section>
+
+             <section data-markdown data-separator-notes="^Note:">
+                 ### What is being collected ?
+
+                 * **User Activity**
+                   * Clicks
+                   * Application activity
+                   * Listening activity
+
+                 * **Monitoring**
+                    * Logs
+                    * Application performance
+
+                 * **Related servicess**
+                   * Analytics, User engagement, tracking, ...
+                   * Social website monitoring (Facebook/Twitter feeds, ...)
+
+                 Note:
+                 * Applications collect different type of metrics or events
+                 * Very important area of technology and IT: Big Data & Deep learning
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Why ?
+
+                * Sales increase: Marketing / Targeting
+                * Product improvements
+                * Prioritization on features
+                * Performance analysis / reliability
+                * Recommendation
+                * ...
+
+                Note:
+                * Different objectives: performance, features, use engagement, sales, ....
+                * KYC - Know Your customer
+            </section>
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Dive 4 - 3rd Parties
+
+                ![naive-view](images/slides/Architecture - Dive 4.png)
+
+                Note:
+                * Services provided by different companies
+                * Collaboration - data exchange
+                * Services bought from other companies
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Content analysis & Enrichment
+
+                * Metadata & content analysis
+                * Crowd sourcing
+                * Clustering & classification
+                * Fingerprinting
+                * Added content
+                * ...
+
+                Note:
+                * Metadata & content analysis = Catalog authors/albums/history/...
+                * Crowd sourcing = LastFM / Grooveshark / Musicbrainz / ...
+                * Clustering & classification = Spotify / Pandora / music genre
+                * Fingerprinting = Shazam / Echonest
+                * Added content (Lyrics, Shop, recommendations, ...) = Additional content (lyrics, link to buy content
+                ...)
+                * ...
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Outsourcing & External Services
+
+                * Payments
+                * Analytics
+                * CDN
+                * Streaming
+                * ...
+
+                Note:
+                * Company will generally specialized in one specific area
+                * Other services provided by other company
+            </section>
+        </section>
+
+        <section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ## Dive 5 - Infrastructure
+
+
+                > Where & How do we run all of this?
+
+                Note:
+                * We need some computers & resources to run all of this
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Where?
+
+                * Physical Data Centers
+                  * On-premise
+                  * DC (owned or colocation)
+
+                * Cloud Infrastructure
+
+                Note:
+                * Historically, self hosting and own data center
+                * Then collocation and hosting provider
+                * THen cloud infrastructure and As A Service system
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### Different types of approach to infrastructure
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note">
+                ### Physical
+
+                * Management of servers, network, cabling ...
+                * Human actions
+                * No automation
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### IaaS
+
+                > IaaS - *Infrastructure As A Service*
+
+                * Servers
+                * Storage
+                * Network
+                * Operating System
+                * ...
+
+
+                > Amazon EC2 / S3, Windows Azure, Google Compute Engine, VmWare, OpenStack, ...
+
+                Note:
+                * Access to cloud features to setup VMs, OS, some network components
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### PaaS
+
+                > PaaS - *Platform As A Service*
+
+                * Managed databases
+                * Web servers
+                * Content Delivery
+                * Container solutions
+
+                > AWS Elastic Beanstalk, AWS RDS, Heroku, Google App Engine, Cloud Foundry, ...
+
+                Note:
+                * PaaS vendors offer a development environment to application developers
+                * Pre-built solutions, don't require managing network, OS, storage
+
+            </section>
+
+            <section data-markdown data-separator-notes="^Note:">
+                ### SaaS
+
+                > SaaS - *Software As A Service*
+
+                * Managed Softwares
+
+
+                > Google Apps, Office 365, Gmail, Dropbox, SalesForce, ...
+
+                Note:
+
+            </section>
+        </section>
+
+        <section data-markdown data-separator-notes="^Note:">
+            ### Music Services (not exhaustive!)
+
+            ![music-map](images/music-map-4f1dc39-intro.jpg)
+
+            Note:
+            Not only music:
+            * ticket sales
+            * gig recommendation
+            * ticket exchange
+            * music software
+
+        </section>
+
+        <section data-markdown>
+            # Questions?
+
+        </section>
+
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+        center: true,
+        showNotes: false,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad();}},
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/math/math.js', async: true},
+            {src: 'lib/js/classList.js', condition: function () { return !document.body.classList;}}
+        ]
+    });
+</script>
+</body>
+</html>
